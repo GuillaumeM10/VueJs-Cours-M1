@@ -1,9 +1,16 @@
 <script setup lang="ts">
-defineProps<{
+const props = defineProps<{
   title: string
   hours: number
   responsible: string
+  id: number
 }>()
+
+const emit = defineEmits(['delete-todo'])
+
+const deleteTodo = () => {
+  emit('delete-todo', props.id)
+}
 </script>
 
 <template>
@@ -13,6 +20,7 @@ defineProps<{
     </h3>
     <p class="heures">{{ hours }} heure{{ hours > 1 ? 's' : '' }}</p>
     <p class="responsable">{{ responsible }}</p>
+    <button @click="deleteTodo">Supprimer</button>
   </div>
 </template>
 
