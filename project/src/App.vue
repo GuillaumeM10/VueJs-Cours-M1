@@ -1,13 +1,15 @@
 <script setup lang="ts">
 import { RouterView } from "vue-router";
-import Footer from "./components/organisms/Footer.vue";
-import Header from "./components/organisms/Header.vue";
+import TheFooter from "./components/organisms/TheFooter.vue";
+import TheHeader from "./components/organisms/TheHeader.vue";
 </script>
 
 <template>
-  <Header />
+  <TheHeader />
 
-  <RouterView />
+  <div class="content px-4 w-[-webkit-fill-available]">
+    <RouterView />
+  </div>
 
-  <Footer />
+  <TheFooter />
 </template>

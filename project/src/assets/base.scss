@@ -52,9 +52,9 @@ $section-gap: 16rem;
   font-weight: normal;
 }
 
-html {
-  font-size: 62.5%;
-}
+// html {
+//   font-size: 62.5%;
+// }
 
 
 body {
@@ -79,10 +79,4 @@ body {
 
 a {
   text-decoration: none;
-}
-
-@media (hover: hover) {
-  a:hover {
-    background-color: hsla(160, 100%, 37%, 0.2);
-  }
 }

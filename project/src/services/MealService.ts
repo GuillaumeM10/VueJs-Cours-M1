@@ -14,7 +14,7 @@ www.themealdb.com/images/ingredients/Lime-Small.png
 */
 
 // API DOC : https://www.themealdb.com/api.php
-const baseUrl = "www.themealdb.com/api/json/v1";
+const baseUrl = "https://www.themealdb.com/api/json/v1/1";
 
 export type MealServiceType = {
   searchMealByName: (name: string) => Promise<MealsType | unknown>;
@@ -64,7 +64,10 @@ const mealDetailsById = async (id: string) => {
 const randomMeal = async () => {
   try {
     const response = await api.get(`${baseUrl}/random.php`);
-    return response.data;
+
+    console.log(response.data.meals[0]);
+
+    return response.data.meals[0];
   } catch (error) {
     throw error;
   }

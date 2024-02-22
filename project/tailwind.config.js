@@ -4,6 +4,11 @@ export default {
   content: [],
   theme: {
     extend: {},
+    screens: {
+      mobile: { max: "768px" },
+
+      tablet: { max: "1024px" },
+    },
   },
   plugins: [],
 };
