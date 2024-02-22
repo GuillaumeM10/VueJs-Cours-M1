@@ -34,7 +34,7 @@ export type MealServiceType = {
 const searchMealByName = async (name: string) => {
   try {
     const response = await api.get(`${baseUrl}/search.php?s=${name}`);
-    return response.data;
+    return response.data.meals;
   } catch (error) {
     throw error;
   }
@@ -44,7 +44,7 @@ const searchMealByName = async (name: string) => {
 const searchMealByFirstLetter = async (letter: string) => {
   try {
     const response = await api.get(`${baseUrl}/search.php?f=${letter}`);
-    return response.data;
+    return response.data.meals;
   } catch (error) {
     throw error;
   }
@@ -54,7 +54,7 @@ const searchMealByFirstLetter = async (letter: string) => {
 const mealDetailsById = async (id: string) => {
   try {
     const response = await api.get(`${baseUrl}/lookup.php?i=${id}`);
-    return response.data;
+    return response.data.meals;
   } catch (error) {
     throw error;
   }
@@ -64,9 +64,6 @@ const mealDetailsById = async (id: string) => {
 const randomMeal = async () => {
   try {
     const response = await api.get(`${baseUrl}/random.php`);
-
-    console.log(response.data.meals[0]);
-
     return response.data.meals[0];
   } catch (error) {
     throw error;

@@ -80,3 +80,13 @@ body {
 a {
   text-decoration: none;
 }
+
+.go-back {
+  svg {
+    transition: transform 0.3s;
+  }
+
+  &:hover svg {
+    transform: translateX(-0.1rem);
+  }
+}

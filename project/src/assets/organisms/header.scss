@@ -39,11 +39,14 @@ nav {
     right: 0;
     background-color: $color-background;
     border-top: 1px solid $color-border;
-    z-index: 100;
+    user-select: none;
+    pointer-events: none;
 
     &.active {
       height: calc(100vh - 190%);
       opacity: 1;
+      pointer-events: all;
+      user-select: all;
     }
   }
 }
@@ -57,7 +60,7 @@ nav {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 22px;
+    height: 16px;
     width: 22px;
 
     span {
@@ -73,7 +76,7 @@ nav {
         transition: all 100ms ease-in-out;
         transform: rotate(45deg);
         transform-origin: top left;
-        width: 28px;
+        width: 20px;
 
       }
 
@@ -87,7 +90,7 @@ nav {
         transition: all 100ms ease-in-out;
         transform: rotate(-45deg);
         transform-origin: bottom left;
-        width: 28px;
+        width: 20px;
       }
     }
   }

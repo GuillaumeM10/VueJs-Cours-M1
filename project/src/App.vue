@@ -3,7 +3,6 @@ import { RouterView } from "vue-router";
 import TheFooter from "./components/organisms/TheFooter.vue";
 import TheHeader from "./components/organisms/TheHeader.vue";
 </script>
-
 <template>
   <TheHeader />
 

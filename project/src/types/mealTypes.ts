@@ -51,9 +51,7 @@ export type MealType = {
   dateModified?: string;
 };
 
-export type MealsType = {
-  meals: MealType[];
-};
+export type MealsType = Array<MealType>;
 
 export type CategoryType = {
   idCategory?: string;

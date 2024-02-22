@@ -1,0 +1,9 @@
+.side-bar {
+  left: -12rem;
+  transition: all 0.5s ease-in-out;
+  max-height: 86dvh;
+
+  &.active {
+    left: 0;
+  }
+}

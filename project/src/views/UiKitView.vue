@@ -1,32 +1,39 @@
 <script setup lang="ts">
-import MealCard from "@/components/molecules/MealCard.vue";
+import BackButtonVue from "@/components/atoms/BackButton.vue";
+import MealsList from "@/components/organisms/MealsList.vue";
+import SideBar from "@/components/organisms/SideBar.vue";
 import MealService from "@/services/MealService";
-import type { MealType } from "@/types/mealTypes";
-import { ref, type Ref } from "vue";
+import type { MealsType, MealType } from "@/types/mealTypes";
+import { reactive, watch } from "vue";
 
-let meal = ref({});
-let meal2 = ref({});
-let meal3 = ref({});
+let meals = reactive<MealsType>([]);
 
-const getMeal = async (meal: Ref<{}>) => {
+const getMeal = async () => {
   try {
-    meal.value = (await MealService.randomMeal()) as MealType;
+    const getRandomMeal = (await MealService.randomMeal()) as MealType;
+    meals.push(getRandomMeal);
   } catch (error) {
     console.error(error);
   }
 };
 
-getMeal(meal);
-getMeal(meal2);
-getMeal(meal3);
+getMeal();
+getMeal();
+getMeal();
+getMeal();
+getMeal();
+getMeal();
 </script>
 
 <template>
-  <main>
-    <h1>Ui Kit</h1>
+  <main class="flex flex-row flex-nowrap relative">
+    <SideBar />
 
-    <MealCard :meal="(meal as MealType)" />
-    <MealCard :meal="(meal2 as MealType)" />
-    <MealCard :meal="(meal3 as MealType)" />
+    <div class="container">
+      <h1>Ui Kit</h1>
+
+      <BackButtonVue />
+      <MealsList v-if="meals.length > 0" :meals="(meals as MealsType)" />
+    </div>
   </main>
 </template>
