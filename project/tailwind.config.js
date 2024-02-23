@@ -8,6 +8,8 @@ export default {
       mobile: { max: "768px" },
 
       tablet: { max: "1024px" },
+
+      desktop: { max: "1280px" },
     },
   },
   plugins: [],

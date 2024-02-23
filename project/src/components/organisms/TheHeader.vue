@@ -7,7 +7,7 @@ const burgerActive = ref(false);
 
 <template>
   <header
-    class="w-[-webkit-fill-available] sticky top-4 m-4 bg-white shadow-md rounded-full z-10"
+    class="w-[-webkit-fill-available] sticky top-4 mobile:top-2 m-4 mobile:my-2 bg-white shadow-md rounded-full z-20"
   >
     <RouterLink to="/">
       <img

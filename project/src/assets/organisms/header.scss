@@ -48,6 +48,14 @@ nav {
       pointer-events: all;
       user-select: all;
     }
+
+    @media (max-width: 768px) {
+      top: calc(100% + .5rem);
+
+      &.active {
+        height: calc(100vh - 150%);
+      }
+    }
   }
 }
 

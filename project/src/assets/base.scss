@@ -90,3 +90,12 @@ a {
     transform: translateX(-0.1rem);
   }
 }
+
+::-webkit-scrollbar {
+  width: .5rem;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgb(192, 212, 231);
+  border-radius: .5rem;
+}

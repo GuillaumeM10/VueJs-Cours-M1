@@ -1,7 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
-  <footer>
+  <footer class="z-10">
     <p>
       <a href="https://vitejs.dev" target="_blank" rel="noopener"> Vite </a>
       +
