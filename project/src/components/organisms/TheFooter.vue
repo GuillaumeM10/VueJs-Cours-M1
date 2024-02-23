@@ -1,11 +1,14 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { RouterLink } from "vue-router";
+</script>
 
 <template>
   <footer class="z-10">
     <p>
-      <a href="https://vitejs.dev" target="_blank" rel="noopener"> Vite </a>
-      +
-      <a href="https://v3.vuejs.org" target="_blank" rel="noopener"> Vue 3 </a>
+      <a href="https://www.themealdb.com/api.php" target="_blank" rel="noopener"
+        >A MealDb
+      </a>
+      <RouterLink to="#header" rel="noopener"> Demo </RouterLink>
     </p>
   </footer>
 </template>

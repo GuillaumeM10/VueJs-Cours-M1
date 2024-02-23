@@ -8,7 +8,7 @@ const props = defineProps<{
 
 <template>
   <div
-    class="meal-card mobile:w-full tablet:w-1/2 desktop:w-1/3 w-1/4 bg-white shadow-md rounded-lg overflow-hidden flex flex-col gap-4 relative cursor-pointer"
+    class="meal-card bg-white shadow-md rounded-lg overflow-hidden flex flex-col gap-4 relative cursor-pointer h-64"
   >
     <RouterLink
       :to="{ name: 'meal', params: { id: props.meal.idMeal } }"
@@ -17,7 +17,7 @@ const props = defineProps<{
       <img
         :alt="props.meal.strMeal"
         :src="props.meal.strMealThumb"
-        class="w-full h-60 object-cover rounded-t-lg"
+        class="w-full h-full object-cover rounded-t-lg"
       />
 
       <div
@@ -30,21 +30,3 @@ const props = defineProps<{
     </RouterLink>
   </div>
 </template>
-
-<style lang="scss" scoped>
-.meal-card {
-  width: 100%;
-
-  @media (min-width: 640px) {
-    width: calc(50% - 0.5rem);
-  }
-
-  @media (min-width: 1024px) {
-    width: calc(33.3333% - 0.7em);
-  }
-
-  @media (min-width: 1280px) {
-    width: calc(25% - 0.8rem);
-  }
-}
-</style>

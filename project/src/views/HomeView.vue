@@ -1,29 +1,15 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import BackButton from "@/components/atoms/BackButton.vue";
+import Banner from "@/components/organisms/Banner.vue";
+import HomeMeals from "@/components/organisms/HomeMeals.vue";
+</script>
 
 <template>
   <main>
-    <h1 class="text-9xl">Home</h1>
-    <h1 class="text-9xl">Home</h1>
-    <h1 class="text-9xl">Home</h1>
-    <h1 class="text-9xl">Home</h1>
-    <h1 class="text-9xl">Home</h1>
-    <h1 class="text-9xl">Home</h1>
-    <h1 class="text-9xl">Home</h1>
-    <h1 class="text-9xl">Home</h1>
-    <h1 class="text-9xl">Home</h1>
-    <h1 class="text-9xl">Home</h1>
-    <h1 class="text-9xl">Home</h1>
-    <h1 class="text-9xl">Home</h1>
-    <h1 class="text-9xl">Home</h1>
-    <h1 class="text-9xl">Home</h1>
-    <h1 class="text-9xl">Home</h1>
-    <h1 class="text-9xl">Home</h1>
-    <h1 class="text-9xl">Home</h1>
-    <h1 class="text-9xl">Home</h1>
-    <h1 class="text-9xl">Home</h1>
-    <h1 class="text-9xl">Home</h1>
-    <h1 class="text-9xl">Home</h1>
-    <h1 class="text-9xl">Home</h1>
-    <h1 class="text-9xl">Home</h1>
+    <BackButton />
+
+    <Banner class="mt-12" />
+
+    <HomeMeals class="mt-12" />
   </main>
 </template>

@@ -12,6 +12,7 @@
 
   .open-btn {
     border-radius: 0 99rem 99rem 0;
+    backdrop-filter: saturate(100%) blur(40px);
 
     &-icon {
       transform: rotate(180deg) translateX(0px);
@@ -32,6 +33,7 @@
     overflow-y: hidden;
     overflow-x: hidden;
     width: 0rem;
+    backdrop-filter: saturate(100%) blur(40px);
     transition: all 0.5s ease-in-out;
   }
 

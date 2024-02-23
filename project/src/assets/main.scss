@@ -3,6 +3,11 @@
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
 
+// SWIPER
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+
 @import './base.scss';
 
 // ATOMS
@@ -10,6 +15,7 @@
 
 // MOLECULES
 @import './molecules/mealCard.scss';
+@import './molecules/searchBar.scss';
 
 // ORGANISMS
 @import './organisms/header.scss';

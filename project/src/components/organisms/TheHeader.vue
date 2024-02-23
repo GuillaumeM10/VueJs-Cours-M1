@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { RouterLink } from "vue-router";
+import SearchMealByName from "../molecules/SearchMealByName.vue";
 
 const burgerActive = ref(false);
 </script>
@@ -8,6 +9,7 @@ const burgerActive = ref(false);
 <template>
   <header
     class="w-[-webkit-fill-available] sticky top-4 mobile:top-2 m-4 mobile:my-2 bg-white shadow-md rounded-full z-20"
+    id="header"
   >
     <RouterLink to="/">
       <img
@@ -17,8 +19,10 @@ const burgerActive = ref(false);
       />
     </RouterLink>
 
+    <SearchMealByName />
+
     <nav
-      class="w-fit text-base mr-4 text-center mobile:rounded-xl mobile:shadow-lg mobile:w-full mobile:p-4 mobile:gap-3"
+      class="w-fit text-base mr-4 tablet:mr-0 text-center tablet:rounded-xl tablet:shadow-lg tablet:w-full tablet:p-4 tablet:gap-3 flex justify-end tablet:justify-center"
       :class="{ active: burgerActive }"
     >
       <RouterLink class="rounded-full py-1 text-xl" to="/">Home</RouterLink>
