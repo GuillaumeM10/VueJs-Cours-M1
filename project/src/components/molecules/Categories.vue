@@ -1,21 +1,20 @@
 <script setup lang="ts">
 import MealService from "@/services/MealService";
-import type { Flags, ListAreas } from "@/types/mealTypes";
+import type { ListCategories } from "@/types/mealTypes";
 import { nextTick, reactive, ref } from "vue";
 import { register } from "swiper/element/bundle";
 import { RouterLink } from "vue-router";
 register();
 
-const flags: Flags = MealService.flags;
-const areas = reactive<ListAreas>([]);
+const categories = reactive<ListCategories>([]);
 
-const getAreas = async () => {
+const getCategories = async () => {
   try {
-    const response = (await MealService.mealList("a")) as ListAreas;
+    const response = (await MealService.categories()) as ListCategories;
 
     if (response) {
-      response.forEach((area) => {
-        areas.push(area);
+      response.forEach((category) => {
+        categories.push(category);
       });
     }
   } catch (error) {
@@ -23,34 +22,34 @@ const getAreas = async () => {
   }
 };
 
-getAreas();
-
-const findFlag = (name: string) => {
-  return flags[name as keyof Flags];
-};
+getCategories();
 </script>
 <template>
   <section class="areas my-12">
-    <h2>Areas</h2>
+    <h2>Categories</h2>
     <swiper-container
       slides-per-view="auto"
       :space-between="0"
       class="my-4 w-[-webkit-fill-available]"
     >
-      <swiper-slide v-if="areas.length > 0" v-for="area in areas" class="w-fit">
+      <swiper-slide
+        v-if="categories.length > 0"
+        v-for="category in categories"
+        class="w-fit"
+      >
         <RouterLink
-          v-if="areas.length > 0"
-          :to="'/category/' + area.strArea"
+          v-if="categories.length > 0"
+          :to="'/category/' + category.strCategory"
           class="text-slate-200"
         >
           <div
             class="area-slide min-h-14 text-center p-0 rounded-full w-fit mr-4"
           >
-            <p class="text-base mb-2 text-black">{{ area.strArea }}</p>
+            <p class="text-base mb-2 text-black">{{ category.strCategory }}</p>
             <img
-              :src="findFlag(area.strArea)"
+              :src="category.strCategoryThumb"
               alt=""
-              class="w-24 h-full rounded-md border-2 border-slate-200 object-cover"
+              class="w-48 h-full rounded-md border-2 border-slate-200 object-cover"
               style="aspect-ratio: 96/65"
             />
           </div>

@@ -7,6 +7,7 @@ import { useRoute } from "vue-router";
 import MealService from "@/services/MealService";
 import MealsList from "@/components/organisms/MealsList.vue";
 import Areas from "@/components/molecules/Areas.vue";
+import Categories from "@/components/molecules/Categories.vue";
 
 // get id from url
 const route = useRoute();
@@ -52,4 +53,5 @@ getMeals();
 
   <MealsList v-if="meals.length > 0" :meals="(meals as MealsType)" />
   <Areas />
+  <Categories />
 </template>
