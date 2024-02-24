@@ -5,6 +5,7 @@ import type {
   ByFilter,
   MealType,
   MealsType,
+  Flags,
 } from "../types/mealTypes";
 import api from "./ApiService";
 
@@ -28,6 +29,7 @@ export type MealServiceType = {
   filterByMainIngredient: (ingredient: string) => Promise<ByFilter | unknown>;
   filterByCategory: (category: string) => Promise<ByFilter | unknown>;
   filterByArea: (area: string) => Promise<ByFilter | unknown>;
+  flags: Flags;
 };
 
 //Search meal by name
@@ -74,7 +76,7 @@ const randomMeal = async () => {
 const categories = async () => {
   try {
     const response = await api.get(`${baseUrl}/categories.php`);
-    return response.data;
+    return response.data.categories;
   } catch (error) {
     throw error;
   }
@@ -83,13 +85,11 @@ const categories = async () => {
 // List all Categories, Area, Ingredients
 const mealList = async (listType: string) => {
   try {
-    if (listType !== "c" || listType !== "c" || listType !== "c")
+    if (listType !== "c" && listType !== "a" && listType !== "i")
       throw { error: "Invalid list type, must be 'c', 'a', or 'i'." };
 
-    const response = await api.get(
-      `${baseUrl}/search.php?s=list.php?${listType}=list`
-    );
-    return response.data;
+    const response = await api.get(`${baseUrl}/list.php?${listType}=list`);
+    return response.data.meals;
   } catch (error) {
     throw error;
   }
@@ -99,7 +99,7 @@ const mealList = async (listType: string) => {
 const filterByMainIngredient = async (ingredient: string) => {
   try {
     const response = await api.get(`${baseUrl}/filter.php?i=${ingredient}`);
-    return response.data;
+    return response.data.meals;
   } catch (error) {
     throw error;
   }
@@ -109,7 +109,7 @@ const filterByMainIngredient = async (ingredient: string) => {
 const filterByCategory = async (category: string) => {
   try {
     const response = await api.get(`${baseUrl}/filter.php?c=${category}`);
-    return response.data;
+    return response.data.meals;
   } catch (error) {
     throw error;
   }
@@ -119,10 +119,69 @@ const filterByCategory = async (category: string) => {
 const filterByArea = async (area: string) => {
   try {
     const response = await api.get(`${baseUrl}/filter.php?a=${area}`);
-    return response.data;
+    return response.data.meals;
   } catch (error) {
     throw error;
   }
+};
+
+const flags: Flags = {
+  us: "https://flagcdn.com/us.svg",
+  American: "https://flagcdn.com/us.svg",
+  gb: "https://flagcdn.com/gb.svg",
+  British: "https://flagcdn.com/gb.svg",
+  ca: "https://flagcdn.com/ca.svg",
+  Canadian: "https://flagcdn.com/ca.svg",
+  cn: "https://flagcdn.com/cn.svg",
+  Chinese: "https://flagcdn.com/cn.svg",
+  hr: "https://flagcdn.com/hr.svg",
+  Croatian: "https://flagcdn.com/hr.svg",
+  nl: "https://flagcdn.com/nl.svg",
+  Dutch: "https://flagcdn.com/nl.svg",
+  eg: "https://flagcdn.com/eg.svg",
+  Egyptian: "https://flagcdn.com/eg.svg",
+  ph: "https://flagcdn.com/ph.svg",
+  Filipino: "https://flagcdn.com/ph.svg",
+  fr: "https://flagcdn.com/fr.svg",
+  French: "https://flagcdn.com/fr.svg",
+  gr: "https://flagcdn.com/gr.svg",
+  Greek: "https://flagcdn.com/gr.svg",
+  in: "https://flagcdn.com/in.svg",
+  Indian: "https://flagcdn.com/in.svg",
+  ie: "https://flagcdn.com/ie.svg",
+  Irish: "https://flagcdn.com/ie.svg",
+  it: "https://flagcdn.com/it.svg",
+  Italian: "https://flagcdn.com/it.svg",
+  jm: "https://flagcdn.com/jm.svg",
+  Jamaican: "https://flagcdn.com/jm.svg",
+  jp: "https://flagcdn.com/jp.svg",
+  Japanese: "https://flagcdn.com/jp.svg",
+  kn: "https://flagcdn.com/kn.svg",
+  Kenyan: "https://flagcdn.com/kn.svg",
+  my: "https://flagcdn.com/my.svg",
+  Malaysian: "https://flagcdn.com/my.svg",
+  mx: "https://flagcdn.com/mx.svg",
+  Mexican: "https://flagcdn.com/mx.svg",
+  ma: "https://flagcdn.com/ma.svg",
+  Moroccan: "https://flagcdn.com/ma.svg",
+  pl: "https://flagcdn.com/pl.svg",
+  Polish: "https://flagcdn.com/pl.svg",
+  pt: "https://flagcdn.com/pt.svg",
+  Portuguese: "https://flagcdn.com/pt.svg",
+  ru: "https://flagcdn.com/ru.svg",
+  Russian: "https://flagcdn.com/ru.svg",
+  es: "https://flagcdn.com/es.svg",
+  Spanish: "https://flagcdn.com/es.svg",
+  th: "https://flagcdn.com/th.svg",
+  Thai: "https://flagcdn.com/th.svg",
+  tn: "https://flagcdn.com/tn.svg",
+  Tunisian: "https://flagcdn.com/tn.svg",
+  tr: "https://flagcdn.com/tr.svg",
+  Turkish: "https://flagcdn.com/tr.svg",
+  un: "https://flagcdn.com/un.svg",
+  Unknown: "https://flagcdn.com/un.svg",
+  vn: "https://flagcdn.com/vn.svg",
+  Vietnamese: "https://flagcdn.com/vn.svg",
 };
 
 const MealService: MealServiceType = {
@@ -135,6 +194,7 @@ const MealService: MealServiceType = {
   filterByMainIngredient,
   filterByCategory,
   filterByArea,
+  flags,
 };
 
 export default MealService;

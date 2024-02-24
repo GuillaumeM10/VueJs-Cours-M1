@@ -20,7 +20,7 @@ for (let index = 0; index < 4; index++) {
 }
 </script>
 <template>
-  <div class="banner">
+  <section class="banner mb-12">
     <h2>Meal of the day</h2>
 
     <div class="container flex flex-row flex-nowrap gap-4 max-h-64 my-4">
@@ -32,5 +32,5 @@ for (let index = 0; index < 4; index++) {
         <MealCard v-if="meals[3]" :meal="meals[3]" />
       </div>
     </div>
-  </div>
+  </section>
 </template>

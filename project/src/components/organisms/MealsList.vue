@@ -1,12 +1,10 @@
 <script setup lang="ts">
-import type { MealsType, MealType } from "@/types/mealTypes";
+import type { MealsType } from "@/types/mealTypes";
 import MealCard from "../molecules/MealCard.vue";
 
 const props = defineProps<{
   meals: MealsType;
 }>();
-
-console.log("load");
 </script>
 
 <template>

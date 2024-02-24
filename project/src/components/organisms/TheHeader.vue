@@ -25,11 +25,22 @@ const burgerActive = ref(false);
       class="w-fit text-base mr-4 tablet:mr-0 text-center tablet:rounded-xl tablet:shadow-lg tablet:w-full tablet:p-4 tablet:gap-3 flex justify-end tablet:justify-center"
       :class="{ active: burgerActive }"
     >
-      <RouterLink class="rounded-full py-1 text-xl" to="/">Home</RouterLink>
-      <RouterLink class="rounded-full py-1 text-xl" to="/categories/all"
+      <RouterLink
+        class="btn-secondary rounded-full py-1 text-base tablet:text-xl"
+        to="/"
+        @click="burgerActive = false"
+        >Home</RouterLink
+      >
+      <RouterLink
+        class="btn-secondary rounded-full py-1 text-base tablet:text-xl"
+        to="/categories"
+        @click="burgerActive = false"
         >Categories</RouterLink
       >
-      <RouterLink class="rounded-full py-1 text-xl" to="/ui-kit"
+      <RouterLink
+        class="btn-secondary rounded-full py-1 text-base tablet:text-xl"
+        to="/ui-kit"
+        @click="burgerActive = false"
         >Ui Kit</RouterLink
       >
     </nav>

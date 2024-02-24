@@ -31,31 +31,26 @@ onMounted(() => {
 });
 </script>
 <template>
-  <section class="home-meals flex flex-raw flex-nowrap relative">
-    <div class="container flex flex-col items-center">
-      <h2>Infinite meals</h2>
+  <section class="home-meals flex flex-col flex-nowrap items-center">
+    <h2 class="self-start">
+      Infinite meals
+      <small class="text-xs">({{ meals.length }} results)</small>
+    </h2>
 
-      <MealsList
-        v-if="meals.length > 0"
-        :meals="(meals as MealsType)"
-        class="my-auto"
-      />
+    <MealsList v-if="meals.length > 0" :meals="(meals as MealsType)" />
 
-      <button
-        @click="getMeal(reactiveLetter)"
-        class="btn-primary my-4 mobile:w-full"
-        :disabled="loading"
-      >
-        {{
-          reactiveLetter === "z"
-            ? "No more meals"
-            : loading
-            ? "Loading..."
-            : "Load more"
-        }}
-      </button>
-    </div>
-
-    <SideBar :right="true" />
+    <button
+      @click="getMeal(reactiveLetter)"
+      class="btn-primary my-4 mobile:w-full text-lg"
+      :disabled="loading"
+    >
+      {{
+        reactiveLetter === "z"
+          ? "No more meals"
+          : loading
+          ? "Loading..."
+          : "Load more"
+      }}
+    </button>
   </section>
 </template>

@@ -51,7 +51,7 @@ export type MealType = {
   dateModified?: string;
 };
 
-export type MealsType = Array<MealType>;
+export type MealsType = MealType[];
 
 export type CategoryType = {
   idCategory?: string;
@@ -60,17 +60,11 @@ export type CategoryType = {
   strCategoryDescription?: string;
 };
 
-export type ListCategories = {
-  meals: CategoryType[];
-};
+export type ListCategories = CategoryType[];
 
-export type AreaType = {
-  strArea: string;
-};
+export type AreaType = { strArea: string };
 
-export type ListAreas = {
-  meals: AreaType[];
-};
+export type ListAreas = AreaType[];
 
 export type IngredientType = {
   idIngredient: string;
@@ -79,12 +73,69 @@ export type IngredientType = {
   strType?: string;
 };
 
-export type ListIngredients = {
-  meals: IngredientType[];
-};
+export type ListIngredients = IngredientType[];
 
 export type ByFilter = {
-  strMeal: string;
-  strMealThumb: string;
-  idMeal: string;
+  strMeal?: string;
+  strMealThumb?: string;
+  idMeal?: string;
+};
+
+export type Flags = {
+  us: string;
+  American: string;
+  gb: string;
+  British: string;
+  ca: string;
+  Canadian: string;
+  cn: string;
+  Chinese: string;
+  hr: string;
+  Croatian: string;
+  nl: string;
+  Dutch: string;
+  eg: string;
+  Egyptian: string;
+  ph: string;
+  Filipino: string;
+  fr: string;
+  French: string;
+  gr: string;
+  Greek: string;
+  in: string;
+  Indian: string;
+  ie: string;
+  Irish: string;
+  it: string;
+  Italian: string;
+  jm: string;
+  Jamaican: string;
+  jp: string;
+  Japanese: string;
+  kn: string;
+  Kenyan: string;
+  my: string;
+  Malaysian: string;
+  mx: string;
+  Mexican: string;
+  ma: string;
+  Moroccan: string;
+  pl: string;
+  Polish: string;
+  pt: string;
+  Portuguese: string;
+  ru: string;
+  Russian: string;
+  es: string;
+  Spanish: string;
+  th: string;
+  Thai: string;
+  tn: string;
+  Tunisian: string;
+  tr: string;
+  Turkish: string;
+  un: string;
+  Unknown: string;
+  vn: string;
+  Vietnamese: string;
 };

@@ -20,3 +20,16 @@
     cursor: not-allowed;
   }
 }
+
+.btn-secondary {
+  display: inline-block;
+  padding: 0 1rem;
+  background-color: transparent;
+  transition: background-color .2s ease-in-out;
+  color: $color-text;
+
+  &:hover,
+  &.router-link-exact-active {
+    background-color: $color-background-soft;
+  }
+}

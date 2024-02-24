@@ -15,22 +15,6 @@ header {
 }
 
 nav {
-  a.router-link-exact-active {
-    color: $color-text;
-  }
-
-  a {
-    display: inline-block;
-    padding: 0 1rem;
-    background-color: transparent;
-    transition: background-color .2s ease-in-out;
-
-    &:hover,
-    &.router-link-exact-active {
-      background-color: $color-background-soft;
-    }
-  }
-
   @media (max-width: 1024px) {
     opacity: 0;
     height: 50vh;
@@ -44,7 +28,6 @@ nav {
     left: 0;
     right: 0;
     background-color: $color-background;
-    border-top: 1px solid $color-border;
     user-select: none;
     pointer-events: none;
 
@@ -52,7 +35,7 @@ nav {
       height: calc(100vh - 150%);
       opacity: 1;
       pointer-events: all;
-      user-select: all;
+      user-select: initial;
     }
   }
 }

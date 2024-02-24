@@ -3,6 +3,7 @@ import BackButtonVue from "@/components/atoms/BackButton.vue";
 import Banner from "@/components/organisms/Banner.vue";
 import MealsList from "@/components/organisms/MealsList.vue";
 import SideBar from "@/components/organisms/SideBar.vue";
+import AnimationDataJson from "@/assets/loop-food.json";
 
 import MealService from "@/services/MealService";
 
@@ -16,8 +17,9 @@ import "vue3-toastify/dist/index.css";
 import { toast } from "vue3-toastify";
 
 import { register } from "swiper/element/bundle";
-import IconChevronLeft from "@/components/atoms/IconChevronLeft.vue";
 register();
+
+import { Vue3Lottie } from "vue3-lottie";
 
 let meals = reactive<MealsType>([]);
 const selectValue = ref<any>(null);
@@ -158,6 +160,15 @@ const onSlideChange = (e: any) => {
 
         <p class="text-black">{{ selectValue?.name }}</p>
       </SideBar>
+    </section>
+
+    <section class="p-4">
+      <h1>404</h1>
+      <Vue3Lottie
+        :animationData="AnimationDataJson"
+        :height="400"
+        :width="400"
+      />
     </section>
   </main>
 </template>
