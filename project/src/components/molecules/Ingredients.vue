@@ -1,20 +1,23 @@
 <script setup lang="ts">
 import MealService from "@/services/MealService";
-import type { ListCategories } from "@/types/mealTypes";
+import type { ListIngredients } from "@/types/mealTypes";
 import { reactive } from "vue";
 import { register } from "swiper/element/bundle";
 import { RouterLink } from "vue-router";
 register();
 
-const categories = reactive<ListCategories>([]);
+const props = defineProps<{
+  propsIngredients?: ListIngredients;
+}>();
+const ingredients = reactive<ListIngredients>([]);
 
-const getCategories = async () => {
+const getIngredients = async () => {
   try {
-    const response = (await MealService.categories()) as ListCategories;
+    const response = (await MealService.mealList("i")) as ListIngredients;
 
     if (response) {
-      response.forEach((category) => {
-        categories.push(category);
+      response.forEach((ingredient) => {
+        ingredients.push(ingredient);
       });
     }
   } catch (error) {
@@ -22,35 +25,44 @@ const getCategories = async () => {
   }
 };
 
-getCategories();
+if (!props.propsIngredients) {
+  getIngredients();
+} else {
+  props.propsIngredients.forEach((ingredient) => {
+    ingredients.push(ingredient);
+  });
+}
 </script>
 <template>
   <section class="areas my-12">
-    <h2>Categories</h2>
+    <h2>Ingredients</h2>
     <swiper-container
       slides-per-view="auto"
       :space-between="0"
       class="my-4 w-[-webkit-fill-available]"
     >
       <swiper-slide
-        v-if="categories.length > 0"
-        v-for="category in categories"
+        v-if="ingredients.length > 0"
+        v-for="ingredient in ingredients"
         class="w-fit"
       >
         <RouterLink
-          v-if="categories.length > 0"
-          :to="'/category/' + category.strCategory"
+          v-if="ingredients.length > 0"
+          :to="'/category/' + ingredient.strIngredient"
           class="text-slate-200"
         >
           <div
             class="area-slide min-h-14 text-center p-0 rounded-full w-fit mr-4"
           >
-            <p class="text-base mb-2 text-black">{{ category.strCategory }}</p>
+            <p class="text-base mb-2 text-black">
+              {{ ingredient.strIngredient }}
+            </p>
             <img
-              :src="category.strCategoryThumb"
+              :src="`https://www.themealdb.com/images/ingredients/${ingredient.strIngredient}.png`"
               alt=""
               class="w-48 h-full rounded-md border-2 border-slate-200 object-cover"
               style="aspect-ratio: 96/65"
+              lazy-load="true"
             />
           </div>
         </RouterLink>

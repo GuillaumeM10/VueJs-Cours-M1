@@ -4,6 +4,9 @@ import MealCard from "../molecules/MealCard.vue";
 import type { MealType, MealsType } from "@/types/mealTypes";
 import MealService from "@/services/MealService";
 
+const props = defineProps<{
+  title?: boolean;
+}>();
 let meals = reactive<MealsType>([]);
 
 const getMeal = async () => {
@@ -21,7 +24,7 @@ for (let index = 0; index < 4; index++) {
 </script>
 <template>
   <section class="banner mb-12">
-    <h2>Meal of the day</h2>
+    <h2 v-if="props.title">Meal of the day</h2>
 
     <div class="container flex flex-row flex-nowrap gap-4 max-h-64 my-4">
       <MealCard v-if="meals[0]" :meal="meals[0]" class="w-full" />
