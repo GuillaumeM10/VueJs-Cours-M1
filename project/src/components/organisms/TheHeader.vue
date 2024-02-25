@@ -26,7 +26,7 @@ const burgerActive = ref(false);
       :class="{ active: burgerActive }"
     >
       <RouterLink
-        class="btn-secondary rounded-full py-1 text-base tablet:text-xl"
+        class="btn-secondary rounded-full py-1 text-base tablet:text-xl hidden tablet:block"
         to="/"
         @click="burgerActive = false"
         >Home</RouterLink
@@ -39,9 +39,15 @@ const burgerActive = ref(false);
       >
       <RouterLink
         class="btn-secondary rounded-full py-1 text-base tablet:text-xl"
-        to="/ui-kit"
+        to="/favorites"
         @click="burgerActive = false"
-        >Ui Kit</RouterLink
+        >Favorites</RouterLink
+      >
+      <RouterLink
+        class="btn-secondary rounded-full py-1 text-base tablet:text-xl"
+        to="/shopping-list"
+        @click="burgerActive = false"
+        >Shopping List</RouterLink
       >
     </nav>
 

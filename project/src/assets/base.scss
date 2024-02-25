@@ -99,3 +99,21 @@ a {
   background-color: rgb(192, 212, 231);
   border-radius: .5rem;
 }
+
+main img {
+  animation: loading 2s infinite ease-in-out;
+}
+
+@keyframes loading {
+  0% {
+    background: lightgray;
+  }
+
+  50% {
+    background: white;
+  }
+
+  100% {
+    background: lightgray;
+  }
+}

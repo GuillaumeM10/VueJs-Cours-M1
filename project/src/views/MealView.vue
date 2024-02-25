@@ -25,8 +25,6 @@ const getMealById = async (id: string) => {
     const response = (await MealService.mealDetailsById(id)) as MealType;
 
     if (response) {
-      console.log(response);
-
       Object.entries(response).forEach(([key, value]) => {
         meal[key as keyof MealType] = value;
       });
@@ -116,7 +114,7 @@ watch(meal, () => {
             <RouterLink
               v-if="meal.strArea"
               :to="/category/ + meal.strArea"
-              class="relative w-40 block overflow-hidden rounded-md"
+              class="relative w-56 tablet:w-40 block overflow-hidden rounded-md"
               style="aspect-ratio: 16/9"
             >
               <p
@@ -137,7 +135,7 @@ watch(meal, () => {
             <RouterLink
               v-if="meal.strCategory"
               :to="/category/ + meal.strCategory"
-              class="relative w-40 block overflow-hidden rounded-md"
+              class="relative w-56 tablet:w-40 block overflow-hidden rounded-md"
               style="aspect-ratio: 16/9"
             >
               <p
@@ -207,7 +205,6 @@ watch(meal, () => {
   </section>
 
   <section class="other-food">
-    <h2>Other food</h2>
-    <Banner :title="false" />
+    <Banner title="Other food" />
   </section>
 </template>

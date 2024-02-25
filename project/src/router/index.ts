@@ -34,6 +34,16 @@ const router = createRouter({
       component: () => import("../views/CategoryView.vue"),
     },
     {
+      path: "/favorites",
+      name: "favorites",
+      component: () => import("../views/FavoritesView.vue"),
+    },
+    {
+      path: "/shopping-list",
+      name: "shopping-list",
+      component: () => import("../views/ShoppingListView.vue"),
+    },
+    {
       path: "/ui-kit",
       name: "ui-kit",
       component: () => import("../views/UiKitView.vue"),
