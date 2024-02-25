@@ -101,5 +101,9 @@ $crossDark: "data:image/svg+xml,%3Csvg id='cross-blue' xmlns='http://www.w3.org/
         }
       }
     }
+
+    @media (max-width: 768px) {
+      left: -100%;
+    }
   }
 }
