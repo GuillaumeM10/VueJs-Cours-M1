@@ -36,6 +36,7 @@ totalIngredients.sort((a, b) => {
     <h2 class="mt-8">Total ingredients</h2>
     <table
       class="mx-auto mb-12 w-full max-w-[30rem] border-separate border-2 border-slate-200 rounded-xl overflow-hidden"
+      v-if="shopingList.length > 0"
     >
       <tr
         v-for="(ingredient, index) in totalIngredients"

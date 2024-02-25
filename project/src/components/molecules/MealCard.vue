@@ -146,10 +146,10 @@ watch(isInShopping, () => {
     />
     <RouterLink
       :to="{ name: 'meal', params: { id: meal.idMeal ?? mealDetails.idMeal } }"
-      class="w-full h-full"
+      class="w-full h-full absolute top-0 left-0"
     >
       <div
-        class="title-container opacity-0 absolute top-0 left-0 w-full h-full bg-black bg-opacity-50 backdrop-blur-sm rounded-t-lg flex items-center justify-center transition-opacity duration-300"
+        class="title-container opacity-0 w-full h-full bg-black bg-opacity-50 backdrop-blur-sm rounded-t-lg flex items-center justify-center transition-opacity duration-300"
       >
         <h2 class="text-xl font-bold text-slate-100 text-center px-4">
           {{ meal.strMeal ?? mealDetails.strMeal }}
