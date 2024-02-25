@@ -1,17 +1,24 @@
 <script setup lang="ts">
 import BackButton from "@/components/atoms/BackButton.vue";
+import IconAddShopping from "@/components/atoms/IconAddShopping.vue";
+import IconCheckShopping from "@/components/atoms/IconCheckShopping.vue";
+import IconEmptyHeart from "@/components/atoms/IconEmptyHeart.vue";
+import IconFullHeart from "@/components/atoms/IconFullHeart.vue";
 import Ingredients from "@/components/molecules/Ingredients.vue";
 import Banner from "@/components/organisms/Banner.vue";
 import MealService from "@/services/MealService";
+import { useFavoritesStore } from "@/stores/favoritesStore";
+import { useShoppingListStore } from "@/stores/shoppingListStore";
 import type { Flags, ListIngredients, MealType } from "@/types/mealTypes";
+import type { ShoppingItem } from "@/types/storeType";
 import { reactive, ref, watch } from "vue";
 import { useRoute } from "vue-router";
 import { toast } from "vue3-toastify";
 import { YoutubeVue3 } from "youtube-vue3";
-
 // get id from url
 const route = useRoute();
 const id = route.params.id;
+
 let meal = reactive<MealType>({
   idMeal: id as string,
 });
@@ -19,6 +26,13 @@ let ytId = ref<string>("");
 let ingredients = reactive<ListIngredients>([]);
 const flags: Flags = MealService.flags;
 let tags: string[] = [];
+
+const favoritesStore = useFavoritesStore();
+let isFav = ref<boolean>(favoritesStore.isFavorite(meal.idMeal));
+const shoppingListStore = useShoppingListStore();
+let isInShopping = ref<boolean>(
+  shoppingListStore.isInShoppingList(meal.idMeal)
+);
 
 const getMealById = async (id: string) => {
   try {
@@ -64,8 +78,71 @@ const getMealById = async (id: string) => {
 
 getMealById(id as string);
 
+const toggleFavorite = () => {
+  if (!isFav.value && meal.strMeal && meal.strMealThumb) {
+    favoritesStore.addToFavorites({
+      idMeal: meal.idMeal,
+      mealLink: "/meal/" + meal.idMeal,
+      strMealThumb: meal.strMealThumb,
+      strMeal: meal.strMeal,
+    });
+    toast.success("Added to favorites", {
+      position: "top-center",
+    });
+  } else {
+    favoritesStore.removeFromFavorites(meal.idMeal);
+    toast.error("Removed from favorites", {
+      position: "top-center",
+    });
+  }
+  isFav.value = !isFav.value;
+};
+
+const toggleShoppingList = () => {
+  if (!isInShopping.value) {
+    let shoppingIngredients: ShoppingItem["ingredients"] = [];
+
+    ingredients.forEach((ingredient, index) => {
+      const amount = (meal as MealType)[
+        ("strMeasure" + (index + 1).toString()) as keyof MealType
+      ];
+      const name = ingredient.strIngredient;
+      if (!amount || !name) return;
+
+      shoppingIngredients?.push({
+        name: name,
+        amount: amount,
+      });
+    });
+
+    shoppingListStore.addToShoppingList({
+      idMeal: meal.idMeal,
+      ingredients: shoppingIngredients,
+    });
+
+    toast.success("Added to shopping list", {
+      position: "top-center",
+    });
+  } else {
+    shoppingListStore.removeFromShoppingList(meal.idMeal);
+    toast.error("Removed from shopping list", {
+      position: "top-center",
+    });
+  }
+
+  isInShopping.value = !isInShopping.value;
+};
+
 watch(meal, () => {
   if (meal.strYoutube) ytId.value = meal.strYoutube.split("v=")[1];
+});
+
+watch(isFav, () => {
+  isFav.value = favoritesStore.isFavorite(meal.idMeal);
+});
+
+watch(isInShopping, () => {
+  isInShopping.value = shoppingListStore.isInShoppingList(meal.idMeal);
 });
 </script>
 <template>
@@ -78,12 +155,23 @@ watch(meal, () => {
       <div
         class="meal-details__image basis-full h-fit sticky mobile:static top-24"
       >
-        <div class="thumbnail overflow-hidden rounded-xl flex h-fit mb-8">
+        <div
+          class="thumbnail overflow-hidden rounded-xl flex h-fit mb-8 relative"
+        >
           <img
             :src="meal.strMealThumb"
             :alt="meal.strMeal"
             class="rounded-xl hover:scale-110 transition-all duration-300 ease-in-out cursor-pointer w-full h-auto"
           />
+          <button class="absolute top-4 left-4" @click="toggleFavorite">
+            <IconFullHeart class="w-10 h-auto" v-if="isFav" />
+            <IconEmptyHeart class="w-10 h-auto" v-if="!isFav" />
+          </button>
+
+          <button class="absolute top-4 right-4" @click="toggleShoppingList">
+            <IconAddShopping class="w-10 h-auto" v-if="!isInShopping" />
+            <IconCheckShopping class="w-10 h-auto" v-if="isInShopping" />
+          </button>
         </div>
         <div class="youtube" v-if="ytId">
           <YoutubeVue3

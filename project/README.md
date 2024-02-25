@@ -1,6 +1,47 @@
 # project
 
-This template should help get you started developing with Vue 3 in Vite.
+On live site [here](https://vue-js-cours-m1.vercel.app/).
+
+# Features
+
+- [x] Vue 3
+- [x] TypeScript
+- [x] Vite
+- [x] Volar
+- [x] Tailwind CSS
+- [x] ESLint
+- [x] Prettier
+- [x] Vue Router
+- [x] Axios
+- [x] The MealDB : https://www.themealdb.com/api.php
+- [x] Favorites Store (sync with local storage)
+- [x] Shopping List Store (sync with local storage)
+- [x] Global search bar
+- [x] Global error handling
+- [x] Toaster
+- [x] Lottie Animation on 404 page
+- [x] Swiper
+- [ ] Import / Export Stores
+- [ ] Dark Mode
+- [x] Bonus : page ui kit / sandbox (route : /ui-kit)
+
+## Project Setup
+
+```sh
+npm install
+```
+
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
+```
+
+### Type-Check, Compile and Minify for Production
+
+```sh
+npm run build
+```
 
 ## Recommended IDE Setup
 
@@ -20,21 +61,3 @@ If the standalone TypeScript plugin doesn't feel fast enough to you, Volar has a
 ## Customize configuration
 
 See [Vite Configuration Reference](https://vitejs.dev/config/).
-
-## Project Setup
-
-```sh
-npm install
-```
-
-### Compile and Hot-Reload for Development
-
-```sh
-npm run dev
-```
-
-### Type-Check, Compile and Minify for Production
-
-```sh
-npm run build
-```
