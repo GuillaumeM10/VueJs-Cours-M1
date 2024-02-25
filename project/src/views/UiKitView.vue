@@ -10,12 +10,8 @@ import MealService from "@/services/MealService";
 import type { MealsType, MealType } from "@/types/mealTypes";
 
 import { reactive, ref } from "vue";
-
 import VueMultiselect from "vue-multiselect";
-
-import "vue3-toastify/dist/index.css";
 import { toast } from "vue3-toastify";
-
 import { register } from "swiper/element/bundle";
 register();
 

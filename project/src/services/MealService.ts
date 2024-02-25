@@ -56,7 +56,7 @@ const searchMealByFirstLetter = async (letter: string) => {
 const mealDetailsById = async (id: string) => {
   try {
     const response = await api.get(`${baseUrl}/lookup.php?i=${id}`);
-    return response.data.meals;
+    return response.data.meals[0];
   } catch (error) {
     throw error;
   }

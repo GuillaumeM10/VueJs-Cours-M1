@@ -9,6 +9,10 @@
     }
   ],
   "compilerOptions": {
-    "types": ["vue3-toastify/global"]
+    "types": ["vue3-toastify/global"],
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
   }
 }

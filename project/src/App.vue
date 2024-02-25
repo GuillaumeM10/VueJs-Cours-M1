@@ -3,6 +3,7 @@ import { RouterView } from "vue-router";
 import TheFooter from "./components/organisms/TheFooter.vue";
 import TheHeader from "./components/organisms/TheHeader.vue";
 import GoTop from "./components/molecules/GoTop.vue";
+import "vue3-toastify/dist/index.css";
 </script>
 <template>
   <TheHeader />
