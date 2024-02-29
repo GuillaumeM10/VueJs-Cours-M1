@@ -45,9 +45,7 @@ totalIngredients.sort((a, b) => {
         <td class="text-base p-4">
           {{ ingredient.amount }}
         </td>
-        <td class="text-base p-4">
-          {{ ingredient.quantity }}
-        </td>
+        <td class="text-base p-4">x{{ ingredient.quantity }}</td>
       </tr>
     </table>
   </div>
