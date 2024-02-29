@@ -90,7 +90,7 @@ export const useShoppingListStore = defineStore("Shopping List", () => {
         }
       });
 
-      shoppingList.splice(index, 1);
+      const deleted = shoppingList.splice(index, 1);
     }
   };
 

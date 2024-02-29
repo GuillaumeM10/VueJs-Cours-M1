@@ -4,13 +4,12 @@ import MealsList from "@/components/organisms/MealsList.vue";
 import { useShoppingListStore } from "@/stores/shoppingListStore";
 import type { MealsType } from "@/types/mealTypes";
 import type { ShoppingList, TotalIngredients } from "@/types/storeType";
-import { reactive, watch } from "vue";
+import { reactive, ref, watch } from "vue";
 
-const shopingListStore = useShoppingListStore();
-let shopingList = reactive<ShoppingList>(shopingListStore.shoppingList);
-let totalIngredients = reactive<TotalIngredients>(
-  shopingListStore.totalIngredients
-);
+const { shoppingList, totalIngredients: totalIngredientFromStore } =
+  useShoppingListStore();
+let shopingList = reactive<ShoppingList>(shoppingList);
+let totalIngredients = reactive<TotalIngredients>(totalIngredientFromStore);
 totalIngredients.sort((a, b) => {
   if ((a.strIngredient ?? "") < (b.strIngredient ?? "")) {
     return -1;

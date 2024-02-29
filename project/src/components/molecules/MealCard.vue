@@ -21,6 +21,7 @@ let mealDetails = reactive<MealType>({
 
 const favoritesStore = useFavoritesStore();
 let isFav = ref<boolean>(favoritesStore.isFavorite(props.meal.idMeal));
+let isLoading = ref<boolean>(false);
 
 const shoppingListStore = useShoppingListStore();
 let isInShopping = ref<boolean>(
@@ -90,6 +91,7 @@ const toggleShoppingList = async () => {
 
 const getMealDetails = async (id: string) => {
   try {
+    isLoading.value = true;
     const response = (await MealService.mealDetailsById(id)) as MealType;
 
     if (!response) return;
@@ -119,12 +121,21 @@ const getMealDetails = async (id: string) => {
     });
   } catch (error) {
     console.error(error);
+  } finally {
+    isLoading.value = false;
   }
 };
 
 if (!props.meal.strMealThumb) {
   getMealDetails(props.meal.idMeal);
 }
+
+watch(
+  () => props.meal.idMeal,
+  (newVal) => {
+    getMealDetails(newVal);
+  }
+);
 
 watch(isFav, () => {
   isFav.value = favoritesStore.isFavorite(props.meal.idMeal);
